@@ -18,13 +18,14 @@ public class Main {
             int choice = readInt("Choose: ");
             try {
                 switch (choice) {
-                    // case 1: addRoom(); break;
+                    case 1: addRoom(); break;
                 }
             } catch (IllegalArgumentException | IllegalStateException e) {
                 System.out.println("Error: " + e.getMessage());
             }
         }
     }
+    
 
     
 
@@ -64,4 +65,12 @@ public class Main {
             catch (NumberFormatException e) { System.out.println("Please enter a whole number."); }
         }
     }
+    private static double readDouble(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try { return Double.parseDouble(scanner.nextLine().trim()); }
+            catch (NumberFormatException e) { System.out.println("Please enter a number."); }
+        }
+    }
+
 }
