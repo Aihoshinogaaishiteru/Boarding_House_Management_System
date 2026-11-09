@@ -54,13 +54,13 @@ public class Main {
     // ---------- Input helpers ----------
     private static String readText(String prompt) {
         System.out.print(prompt);
-        return in.nextLine().trim().replace(",", " "); // commas would break the CSV
+        return scanner.nextLine().trim().replace(",", " "); // commas would break the CSV
     }
 
     private static int readInt(String prompt) {
         while (true) {
             System.out.print(prompt);
-            try { return Integer.parseInt(in.nextLine().trim()); }
+            try { return Integer.parseInt(scanner.nextLine().trim()); }
             catch (NumberFormatException e) { System.out.println("Please enter a whole number."); }
         }
     }
