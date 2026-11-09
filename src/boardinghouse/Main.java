@@ -9,9 +9,15 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {  boolean running = true;
+        while (running) {
+            printMenu();
+            int choice = readInt("Choose: ");
+            try {
+                switch (choice) {
+                    case 1: addRoom(); break;
+                }
 
-        printMenu();
     }
     public static void printMenu() {
         System.out.println("\n============BOARDING HOUSE MANAGEMENT SYSTEM============\n");
@@ -37,4 +43,11 @@ public class Main {
 
         
     }
+    private static void addRoom() {
+        String no = readText("Room number: ");
+        String type = readText("Type (e.g. Single, Double, Bedspace): ");
+        double rate = readDouble("Monthly rate: ");
+        int cap = readInt("Capacity (number of tenants): ");
+        manager.addRoom(no, type, rate, cap);
+        System.out.println("Room added.");
 }
