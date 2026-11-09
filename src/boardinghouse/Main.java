@@ -6,19 +6,28 @@ import boardinghouse.model.Tenant;
 
 import java.util.Scanner;
 
-
-
 public class Main {
-    public static void main(String[] args) {  boolean running = true;
+    private static final Scanner scanner = new Scanner(System.in);
+    // private static final BoardingHouseManager manager = 
+    // new BoardingHouseManager(new FileStorage(folder: "data"));
+
+    public static void main(String[] args) {
+        boolean running = true;
         while (running) {
             printMenu();
             int choice = readInt("Choose: ");
             try {
                 switch (choice) {
-                    case 1: addRoom(); break;
+                    // case 1: addRoom(); break;
                 }
-
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
     }
+
+    
+
     public static void printMenu() {
         System.out.println("\n============BOARDING HOUSE MANAGEMENT SYSTEM============\n");
 
@@ -40,14 +49,19 @@ public class Main {
         System.out.println("\n===System===");
         System.out.println("0. Exit");
 
-
-        
     }
-    private static void addRoom() {
-        String no = readText("Room number: ");
-        String type = readText("Type (e.g. Single, Double, Bedspace): ");
-        double rate = readDouble("Monthly rate: ");
-        int cap = readInt("Capacity (number of tenants): ");
-        manager.addRoom(no, type, rate, cap);
-        System.out.println("Room added.");
+
+    // ---------- Input helpers ----------
+    private static String readText(String prompt) {
+        System.out.print(prompt);
+        return in.nextLine().trim().replace(",", " "); // commas would break the CSV
+    }
+
+    private static int readInt(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try { return Integer.parseInt(in.nextLine().trim()); }
+            catch (NumberFormatException e) { System.out.println("Please enter a whole number."); }
+        }
+    }
 }
