@@ -21,7 +21,6 @@ public abstract class Person {
    @Override
     public String toString() {
         return getRole() + ": " + name + " (" + contact + ")";
-
     }
 
     
