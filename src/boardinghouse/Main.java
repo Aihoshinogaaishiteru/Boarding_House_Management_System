@@ -3,13 +3,17 @@ package boardinghouse;
 import boardinghouse.model.Billing;
 import boardinghouse.model.Room;
 import boardinghouse.model.Tenant;
+import boardinghouse.service.BoardingHouseManager;
+import boardinghouse.service.FileStorage;
 
+import java.time.YearMonth;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
-    // private static final BoardingHouseManager manager = 
-    // new BoardingHouseManager(new FileStorage(folder: "data"));
+    private static final BoardingHouseManager manager = 
+    new BoardingHouseManager(new FileStorage("data"));
 
     public static void main(String[] args) {
         boolean running = true;
@@ -50,6 +54,15 @@ public class Main {
         System.out.println("\n===System===");
         System.out.println("0. Exit");
 
+    }
+     // ---------- Rooms ----------
+    private static void addRoom() {
+        String no = readText("Room number: ");
+        String type = readText("Type (e.g. Single, Double, Bedspace): ");
+        double rate = readDouble("Monthly rate: ");
+        int cap = readInt("Capacity (number of tenants): ");
+        manager.addRoom(no, type, rate, cap);
+        System.out.println("Room added.");
     }
 
     // ---------- Input helpers ----------
