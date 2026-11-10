@@ -23,4 +23,6 @@ public class Room {
      public int getCapacity() { return capacity; }
     public int getOccupantCount() { return occupants.size(); }
     public List<Tenant> getOccupants() { return Collections.unmodifiableList(occupants); }
+
+     public boolean isFull() { return occupants.size() >= capacity; }
 }
