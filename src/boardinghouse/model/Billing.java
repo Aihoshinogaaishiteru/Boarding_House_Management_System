@@ -28,6 +28,11 @@ public class Billing {
         return String.join(",", String.valueOf(id), String.valueOf(tenantId), month.toString(),
                 String.valueOf(amount), datePaid.toString());
     }
+      public static Billing fromCsv(String line) {
+        String[] p = line.split(",", -1);
+        return new Billing(Integer.parseInt(p[0]), Integer.parseInt(p[1]), YearMonth.parse(p[2]),
+                Double.parseDouble(p[3]), LocalDate.parse(p[4]));
+    }
 
 
 }
