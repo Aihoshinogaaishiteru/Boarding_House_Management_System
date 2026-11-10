@@ -18,7 +18,11 @@ public abstract class Person {
 
     public abstract String getRole();
 
-   
+   @Override
+    public String toString() {
+        return getRole() + ": " + name + " (" + contact + ")";
+
+    }
 
     
 }
