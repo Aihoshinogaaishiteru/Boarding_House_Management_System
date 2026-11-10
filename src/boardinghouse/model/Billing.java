@@ -18,7 +18,11 @@ public class Billing {
         this.amount = amount;
         this.datePaid = datePaid;
     }
-
+ public int getId() { return id; }
+    public int getTenantId() { return tenantId; }
+    public YearMonth getMonth() { return month; }
+    public double getAmount() { return amount; }
+    public LocalDate getDatePaid() { return datePaid; }
 
 
 
