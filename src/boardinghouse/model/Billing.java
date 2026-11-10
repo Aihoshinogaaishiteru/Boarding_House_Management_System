@@ -24,7 +24,10 @@ public class Billing {
     public double getAmount() { return amount; }
     public LocalDate getDatePaid() { return datePaid; }
 
+      public String toCsv() {
+        return String.join(",", String.valueOf(id), String.valueOf(tenantId), month.toString(),
+                String.valueOf(amount), datePaid.toString());
+    }
 
 
-    
 }
