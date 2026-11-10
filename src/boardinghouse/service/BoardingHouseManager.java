@@ -147,6 +147,12 @@ public class BoardingHouseManager {
                 result.add(b);
         return result;
     }
+ /** Tenants who still owe something for the given month. */
+    public List<Tenant> getTenantsWithBalance(YearMonth month) {
+        List<Tenant> result = new ArrayList<>();
+        for (Tenant t : tenants) if (getBalance(t, month) > 0) result.add(t);
+        return result;
+    }
 
     private int nextBillingId() {
         int max = 0;
