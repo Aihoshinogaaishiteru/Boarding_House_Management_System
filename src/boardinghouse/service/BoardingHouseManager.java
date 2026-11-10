@@ -68,5 +68,14 @@ public BoardingHouseManager(FileStorage storage) {
         return max + 1;
     }
 
-   
+      public Tenant checkIn(String name, String contact, String roomNo, double deposit) {
+        if (name.isEmpty()) throw new IllegalArgumentException("Name cannot be empty.");
+        Room room = findRoom(roomNo);
+        if (room == null) throw new IllegalArgumentException("Room not found.");
+        Tenant t = new Tenant(nextTenantId(), name, contact, room.getRoomNo(), LocalDate.now(), deposit);
+        room.addOccupant(t); // throws if the room is full
+        tenants.add(t);
+        save();
+        return t;
+    }
 }   
