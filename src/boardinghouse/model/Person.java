@@ -8,4 +8,7 @@ public class Person {
             this.name = name;
             this.contact = contact;
         }
+         public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
 }
