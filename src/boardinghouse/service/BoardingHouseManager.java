@@ -56,4 +56,6 @@ public BoardingHouseManager(FileStorage storage) {
         rooms.remove(r);
         save();
     }
+     public List<Tenant> getTenants() { return Collections.unmodifiableList(tenants); }
+
 }   
