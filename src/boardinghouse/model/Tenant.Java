@@ -28,4 +28,9 @@ public class Tenant extends Person {
         return String.join(",", String.valueOf(id), getName(), getContact(), roomNo,
                 moveIn.toString(), String.valueOf(deposit));
     }
+     public static Tenant fromCsv(String line) {
+        String[] p = line.split(",", -1);
+        return new Tenant(Integer.parseInt(p[0]), p[1], p[2], p[3],
+                LocalDate.parse(p[4]), Double.parseDouble(p[5]));
+    }
 }
