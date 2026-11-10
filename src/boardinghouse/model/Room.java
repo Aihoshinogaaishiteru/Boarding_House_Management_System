@@ -1,6 +1,7 @@
 package boardinghouse.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Room {
@@ -19,4 +20,7 @@ public class Room {
       public String getRoomNo() { return roomNo; }
     public String getType() { return type; }
     public double getRate() { return rate; }
+     public int getCapacity() { return capacity; }
+    public int getOccupantCount() { return occupants.size(); }
+    public List<Tenant> getOccupants() { return Collections.unmodifiableList(occupants); }
 }
