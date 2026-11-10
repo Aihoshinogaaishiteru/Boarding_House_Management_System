@@ -49,4 +49,11 @@ public BoardingHouseManager(FileStorage storage) {
         rooms.add(new Room(roomNo, type, rate, capacity));
         save();
     }
+     public void removeRoom(String roomNo) {
+        Room r = findRoom(roomNo);
+        if (r == null) throw new IllegalArgumentException("Room not found.");
+        if (r.getOccupantCount() > 0) throw new IllegalStateException("Cannot remove: room still has tenants.");
+        rooms.remove(r);
+        save();
+    }
 }   
