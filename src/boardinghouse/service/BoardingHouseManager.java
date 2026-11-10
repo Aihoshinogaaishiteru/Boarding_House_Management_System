@@ -58,4 +58,8 @@ public BoardingHouseManager(FileStorage storage) {
     }
      public List<Tenant> getTenants() { return Collections.unmodifiableList(tenants); }
 
+      public Tenant findTenant(int id) {
+        for (Tenant t : tenants) if (t.getId() == id) return t;
+        return null;
+    }
 }   
