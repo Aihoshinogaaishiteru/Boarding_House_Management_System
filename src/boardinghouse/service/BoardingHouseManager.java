@@ -96,11 +96,20 @@ public BoardingHouseManager(FileStorage storage) {
             if (b.getTenantId() == t.getId() && b.getMonth().equals(month)) paid += b.getAmount();
         }
         return Math.max(rate - paid, 0);
+
     }
+       public List<Billing> getBillingsFor(int tenantId) {
+        List<Billing> result = new ArrayList<>();
+        for (Billing b : billings) if (b.getTenantId() == tenantId) result.add(b);
+        return result;
+    }
+
     
        private int nextBillingId() {
         int max = 0;
         for (Billing b : billings) max = Math.max(max, b.getId());
         return max + 1;
     }
+
+    
 }   
