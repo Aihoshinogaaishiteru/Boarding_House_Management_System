@@ -32,5 +32,8 @@ public BoardingHouseManager(FileStorage storage) {
             if (r != null) r.addOccupant(t);
         }
     }
+    private void save() {
+        storage.saveAll(rooms, tenants, billings);
+    }
     
-}
+}   
