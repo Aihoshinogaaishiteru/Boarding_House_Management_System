@@ -34,5 +34,8 @@ public class Room {
      public void removeOccupant(Tenant t) {
         occupants.remove(t);
     }
+     public String toCsv() {
+        return String.join(",", roomNo, type, String.valueOf(rate), String.valueOf(capacity));
+    }
 
 }
