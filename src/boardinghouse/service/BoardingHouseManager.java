@@ -42,5 +42,11 @@ public BoardingHouseManager(FileStorage storage) {
         for (Room r : rooms) if (r.getRoomNo().equalsIgnoreCase(roomNo)) return r;
         return null;
     }
-    
+     public void addRoom(String roomNo, String type, double rate, int capacity) {
+        if (roomNo.isEmpty()) throw new IllegalArgumentException("Room number cannot be empty.");
+        if (findRoom(roomNo) != null) throw new IllegalArgumentException("Room " + roomNo + " already exists.");
+        if (rate < 0 || capacity < 1) throw new IllegalArgumentException("Rate must be 0 or more and capacity at least 1.");
+        rooms.add(new Room(roomNo, type, rate, capacity));
+        save();
+    }
 }   
