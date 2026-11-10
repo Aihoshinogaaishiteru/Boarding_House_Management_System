@@ -116,7 +116,7 @@ public class BoardingHouseManager {
         return getBalance(t, month);
     }
 
-    public Tenant checkOut(int tenantId) {
+    public Tenant checkOut(int tenantId) {  
         Tenant t = findTenant(tenantId);
         if (t == null)
             throw new IllegalArgumentException("Tenant not found.");

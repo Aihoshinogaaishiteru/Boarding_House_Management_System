@@ -3,11 +3,10 @@ package boardinghouse;
 import boardinghouse.model.Billing;
 import boardinghouse.model.Room;
 import boardinghouse.model.Tenant;
+import boardinghouse.service.BoardingHouseManager;
 
-import java.time.LocalDate;
+
 import java.time.YearMonth;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
