@@ -31,4 +31,8 @@ public class Room {
         occupants.add(t);
     }
 
+     public void removeOccupant(Tenant t) {
+        occupants.remove(t);
+    }
+
 }
