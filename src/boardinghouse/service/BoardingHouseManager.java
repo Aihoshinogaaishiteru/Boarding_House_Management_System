@@ -88,6 +88,16 @@ public BoardingHouseManager(FileStorage storage) {
         return t;
     }
     
+       public double getBalance(Tenant t, YearMonth month) {
+        Room r = findRoom(t.getRoomNo());
+        double rate = (r == null) ? 0 : r.getRate();
+        double paid = 0;
+        for (Billing b : billings) {
+            if (b.getTenantId() == t.getId() && b.getMonth().equals(month)) paid += b.getAmount();
+        }
+        return Math.max(rate - paid, 0);
+    }
+    
        private int nextBillingId() {
         int max = 0;
         for (Billing b : billings) max = Math.max(max, b.getId());
