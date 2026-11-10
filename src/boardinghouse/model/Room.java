@@ -38,4 +38,9 @@ public class Room {
         return String.join(",", roomNo, type, String.valueOf(rate), String.valueOf(capacity));
     }
 
+     public static Room fromCsv(String line) {
+        String[] p = line.split(",", -1);
+        return new Room(p[0], p[1], Double.parseDouble(p[2]), Integer.parseInt(p[3]));
+    }
+
 }
