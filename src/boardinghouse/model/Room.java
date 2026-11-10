@@ -16,4 +16,7 @@ public class Room {
         this.rate = rate;
         this.capacity = capacity;
     }
+      public String getRoomNo() { return roomNo; }
+    public String getType() { return type; }
+    public double getRate() { return rate; }
 }
