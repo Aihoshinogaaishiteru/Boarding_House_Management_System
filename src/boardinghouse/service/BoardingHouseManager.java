@@ -62,4 +62,11 @@ public BoardingHouseManager(FileStorage storage) {
         for (Tenant t : tenants) if (t.getId() == id) return t;
         return null;
     }
+    private int nextTenantId() {
+        int max = 0;
+        for (Tenant t : tenants) max = Math.max(max, t.getId());
+        return max + 1;
+    }
+
+   
 }   
