@@ -4,6 +4,7 @@ import boardinghouse.model.Billing;
 import boardinghouse.model.Room;
 import boardinghouse.model.Tenant;
 import boardinghouse.service.BoardingHouseManager;
+import boardinghouse.service.FileStorage;
 
 
 import java.time.YearMonth;
