@@ -11,5 +11,10 @@ import java.util.stream.Collectors;
 
 
 public class FileStorage {
-    
+    private final Path dir;
+
+    public FileStorage(String folder) {
+        this.dir = Paths.get(folder);
+    }
+
 }
