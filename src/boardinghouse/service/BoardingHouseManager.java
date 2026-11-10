@@ -87,4 +87,10 @@ public BoardingHouseManager(FileStorage storage) {
         save();
         return t;
     }
+    
+       private int nextBillingId() {
+        int max = 0;
+        for (Billing b : billings) max = Math.max(max, b.getId());
+        return max + 1;
+    }
 }   
