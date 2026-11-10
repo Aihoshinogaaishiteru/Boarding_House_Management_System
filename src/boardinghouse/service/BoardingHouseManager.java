@@ -15,11 +15,22 @@ import java.util.List;
  * Methods throw IllegalArgumentException / IllegalStateException with a
  * readable message when something is not allowed.
  */
-// public class BoardingHouseManager {
-//     private final FileStorage storage;
-//     private final List<Room> rooms;
-//     private final List<Tenant> tenants;
-//     private final List<Billing> billings;
+public class BoardingHouseManager {
+    private final FileStorage storage;
+    private final List<Room> rooms;
+    private final List<Tenant> tenants;
+    private final List<Billing> billings;
 
-
+public BoardingHouseManager(FileStorage storage) {
+        this.storage = storage;
+        this.rooms = storage.loadRooms();
+        this.tenants = storage.loadTenants();
+        this.billings = storage.loadBillings();
+        // link each loaded tenant to their room   
+        for (Tenant t : tenants) {
+            Room r = findRoom(t.getRoomNo());
+            if (r != null) r.addOccupant(t);
+        }
+    }
+    
 }
