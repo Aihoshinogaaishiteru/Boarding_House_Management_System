@@ -35,5 +35,12 @@ public BoardingHouseManager(FileStorage storage) {
     private void save() {
         storage.saveAll(rooms, tenants, billings);
     }
+
+    public List<Room> getRooms() { return Collections.unmodifiableList(rooms); }
+
+    public Room findRoom(String roomNo) {
+        for (Room r : rooms) if (r.getRoomNo().equalsIgnoreCase(roomNo)) return r;
+        return null;
+    }
     
 }   
