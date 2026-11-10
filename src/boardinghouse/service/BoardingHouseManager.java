@@ -78,4 +78,13 @@ public BoardingHouseManager(FileStorage storage) {
         save();
         return t;
     }
+     public Tenant checkOut(int tenantId) {
+        Tenant t = findTenant(tenantId);
+        if (t == null) throw new IllegalArgumentException("Tenant not found.");
+        Room r = findRoom(t.getRoomNo());
+        if (r != null) r.removeOccupant(t);
+        tenants.remove(t);
+        save();
+        return t;
+    }
 }   
