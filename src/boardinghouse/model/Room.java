@@ -43,4 +43,6 @@ public class Room {
         return new Room(p[0], p[1], Double.parseDouble(p[2]), Integer.parseInt(p[3]));
     }
 
+    // Complete Room Java class with toString() method
+
 }
