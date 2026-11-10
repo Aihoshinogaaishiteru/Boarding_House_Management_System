@@ -25,4 +25,10 @@ public class Room {
     public List<Tenant> getOccupants() { return Collections.unmodifiableList(occupants); }
 
      public boolean isFull() { return occupants.size() >= capacity; }
+
+      public void addOccupant(Tenant t) {
+        if (isFull()) throw new IllegalStateException("Room " + roomNo + " is full.");
+        occupants.add(t);
+    }
+
 }
