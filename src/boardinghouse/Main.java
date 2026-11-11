@@ -26,14 +26,14 @@ public class Main {
             try {
                 switch (choice) {
                     case 1: addRoom(); break;
-                    case 2: listRooms(); break; 
-                    case 3: removeRoom(); break;
-                    case 4: checkIn(); break;
-                    case 5: listTenants(); break;
-                    case 6: checkOut(); break;
-                    case 7: recordPayment(); break;
-                    case 8: viewPayments(); break;
-                    case 9: unpaidReport(); break;
+                    // case 2: listRooms(); break; 
+                    // case 3: removeRoom(); break;
+                    // case 4: checkIn(); break;
+                    // case 5: listTenants(); break;
+                    // case 6: checkOut(); break;
+                    // case 7: recordPayment(); break;
+                    // case 8: viewPayments(); break;
+                    // case 9: unpaidReport(); break;
                     case 0: running = false; break;
                     default: System.out.println("Invalid choice.");
                 }
