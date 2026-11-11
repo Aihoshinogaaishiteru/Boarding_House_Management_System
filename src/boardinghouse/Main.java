@@ -27,7 +27,7 @@ public class Main {
                 switch (choice) {
                     case 1: addRoom(); break;
                     case 2: listRooms(); break; 
-                    // case 3: removeRoom(); break;
+                    case 3: removeRoom(); break;
                     // case 4: checkIn(); break;
                     // case 5: listTenants(); break;
                     // case 6: checkOut(); break;
@@ -37,6 +37,7 @@ public class Main {
                     case 0: running = false; break;
                     default: System.out.println("Invalid choice.");
                 }
+
                 
             } catch (IllegalArgumentException | IllegalStateException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -88,6 +89,10 @@ public class Main {
             System.out.printf("%-8s %-12s %10.2f %7d/%d%s%n", r.getRoomNo(), r.getType(),
                     r.getRate(), r.getOccupantCount(), r.getCapacity(), status);
         }
+    }
+     private static void removeRoom() {
+        manager.removeRoom(readText("Room number to remove: "));
+        System.out.println("Room removed.");
     }
 
     // ---------- Input helpers ----------
