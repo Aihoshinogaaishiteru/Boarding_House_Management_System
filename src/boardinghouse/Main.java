@@ -26,7 +26,7 @@ public class Main {
             try {
                 switch (choice) {
                     case 1: addRoom(); break;
-                    // case 2: listRooms(); break; 
+                    case 2: listRooms(); break; 
                     // case 3: removeRoom(); break;
                     // case 4: checkIn(); break;
                     // case 5: listTenants(); break;
@@ -78,6 +78,16 @@ public class Main {
         int cap = readInt("Capacity (number of tenants): ");
         // manager.addRoom(no, type, rate, cap);
         System.out.println("Room added.");
+    }
+     private static void listRooms() {
+        List<Room> rooms = manager.getRooms();
+        if (rooms.isEmpty()) { System.out.println("No rooms yet."); return; }
+        System.out.printf("%-8s %-12s %10s %10s%n", "Room", "Type", "Rate", "Occupancy");
+        for (Room r : rooms) {
+            String status = r.isFull() ? " (FULL)" : "";
+            System.out.printf("%-8s %-12s %10.2f %7d/%d%s%n", r.getRoomNo(), r.getType(),
+                    r.getRate(), r.getOccupantCount(), r.getCapacity(), status);
+        }
     }
 
     // ---------- Input helpers ----------
