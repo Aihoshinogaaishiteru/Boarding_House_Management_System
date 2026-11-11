@@ -31,8 +31,8 @@ public class Main {
                     case 4: checkIn(); break;
                     case 5: listTenants(); break;
                     case 6: checkOut(); break;
-                    // case 7: recordPayment(); break;
-                    // case 8: viewPayments(); break;
+                    case 7: recordPayment(); break;
+                    case 8: viewPayments(); break;
                     // case 9: unpaidReport(); break;
                     case 0: running = false; break;
                     default: System.out.println("Invalid choice.");
@@ -127,6 +127,17 @@ public class Main {
         double amount = readDouble("Amount paid: ");
         double balance = manager.recordPayment(id, month, amount);
         System.out.printf("Payment recorded. Balance for %s: %.2f%n", month, balance);
+    }
+    private static void viewPayments() {
+        int id = readInt("Tenant ID: ");
+        Tenant t = manager.findTenant(id);
+        System.out.println("Payments for " + (t == null ? "tenant #" + id + " (checked out)" : t.getName()) + ":");
+        List<Billing> list = manager.getBillingsFor(id);
+        if (list.isEmpty()) { System.out.println("  No payments found."); return; }
+        for (Billing b : list) {
+            System.out.printf("  #%d  month %s  amount %.2f  paid on %s%n",
+                    b.getId(), b.getMonth(), b.getAmount(), b.getDatePaid());
+        }
     }
 
     // ---------- Input helpers ----------
