@@ -44,7 +44,9 @@ public class Main {
                 System.out.println("Error: " + e.getMessage());
             }
         }
+    System.out.println("Exiting. \n Goodbye!");
     }
+    
     
     
 
@@ -78,7 +80,7 @@ public class Main {
         String type = readText("Type (e.g. Single, Double, Bedspace): ");
         double rate = readDouble("Monthly rate: ");
         int cap = readInt("Capacity (number of tenants): ");
-        // manager.addRoom(no, type, rate, cap);
+        manager.addRoom(no, type, rate, cap);
         System.out.println("Room added.");
     }
      private static void listRooms() {
