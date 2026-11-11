@@ -139,6 +139,19 @@ public class Main {
                     b.getId(), b.getMonth(), b.getAmount(), b.getDatePaid());
         }
     }
+       private static void unpaidReport() {
+        YearMonth month = readMonth("Month to check (YYYY-MM, blank = this month): ");
+        List<Tenant> owing = manager.getTenantsWithBalance(month);
+        System.out.println("Unpaid / partial rent for " + month + ":");
+        if (owing.isEmpty()) { System.out.println("  Everyone is fully paid."); return; }
+        double total = 0;
+        for (Tenant t : owing) {
+            double bal = manager.getBalance(t, month);
+            total += bal;
+            System.out.printf("  %-4d %-20s room %-6s owes %.2f%n", t.getId(), t.getName(), t.getRoomNo(), bal);
+        }
+        System.out.printf("Total outstanding: %.2f%n", total);
+    }
 
     // ---------- Input helpers ----------
     private static String readText(String prompt) {
