@@ -33,7 +33,7 @@ public class Main {
                     case 6: checkOut(); break;
                     case 7: recordPayment(); break;
                     case 8: viewPayments(); break;
-                    // case 9: unpaidReport(); break;
+                    case 9: unpaidReport(); break;
                     case 0: running = false; break;
                     default: System.out.println("Invalid choice.");
                 }
