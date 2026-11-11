@@ -37,6 +37,7 @@ public class Main {
                     case 0: running = false; break;
                     default: System.out.println("Invalid choice.");
                 }
+                
 
                 
             } catch (IllegalArgumentException | IllegalStateException e) {
@@ -119,6 +120,15 @@ public class Main {
         System.out.println(t.getName() + " has been checked out. Payment history is kept.");
     }
 
+     // ---------- Billing ----------
+    private static void recordPayment() {
+        int id = readInt("Tenant ID: ");
+        YearMonth month = readMonth("Month being paid (YYYY-MM, blank = this month): ");
+        double amount = readDouble("Amount paid: ");
+        double balance = manager.recordPayment(id, month, amount);
+        System.out.printf("Payment recorded. Balance for %s: %.2f%n", month, balance);
+    }
+
     // ---------- Input helpers ----------
     private static String readText(String prompt) {
         System.out.print(prompt);
@@ -137,6 +147,15 @@ public class Main {
             System.out.print(prompt);
             try { return Double.parseDouble(scanner.nextLine().trim()); }
             catch (NumberFormatException e) { System.out.println("Please enter a number."); }
+        }
+    }
+      private static YearMonth readMonth(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String s = scanner.nextLine().trim();
+            if (s.isEmpty()) return YearMonth.now();
+            try { return YearMonth.parse(s); }
+            catch (Exception e) { System.out.println("Use the format YYYY-MM, e.g. 2026-11."); }
         }
     }
 }
