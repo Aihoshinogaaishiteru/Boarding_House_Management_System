@@ -94,6 +94,26 @@ public class Main {
         manager.removeRoom(readText("Room number to remove: "));
         System.out.println("Room removed.");
     }
+     // ---------- Tenants ----------
+    private static void checkIn() {
+        if (manager.getRooms().isEmpty()) { System.out.println("Add a room first."); return; }
+        String name = readText("Tenant name: ");
+        String contact = readText("Contact number: ");
+        listRooms();
+        String roomNo = readText("Assign to room number: ");
+        double deposit = readDouble("Deposit paid: ");
+        Tenant t = manager.checkIn(name, contact, roomNo, deposit);
+        System.out.println("Tenant added with ID " + t.getId() + ".");
+    }
+      private static void listTenants() {
+        List<Tenant> tenants = manager.getTenants();
+        if (tenants.isEmpty()) { System.out.println("No tenants yet."); return; }
+        System.out.printf("%-4s %-20s %-14s %-8s %-12s %10s%n", "ID", "Name", "Contact", "Room", "Move-in", "Deposit");
+        for (Tenant t : tenants) {
+            System.out.printf("%-4d %-20s %-14s %-8s %-12s %10.2f%n", t.getId(), t.getName(),
+                    t.getContact(), t.getRoomNo(), t.getMoveIn(), t.getDeposit());
+        }
+    }
 
     // ---------- Input helpers ----------
     private static String readText(String prompt) {
