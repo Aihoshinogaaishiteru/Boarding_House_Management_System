@@ -28,9 +28,9 @@ public class Main {
                     case 1: addRoom(); break;
                     case 2: listRooms(); break; 
                     case 3: removeRoom(); break;
-                    // case 4: checkIn(); break;
-                    // case 5: listTenants(); break;
-                    // case 6: checkOut(); break;
+                    case 4: checkIn(); break;
+                    case 5: listTenants(); break;
+                    case 6: checkOut(); break;
                     // case 7: recordPayment(); break;
                     // case 8: viewPayments(); break;
                     // case 9: unpaidReport(); break;
@@ -113,6 +113,10 @@ public class Main {
             System.out.printf("%-4d %-20s %-14s %-8s %-12s %10.2f%n", t.getId(), t.getName(),
                     t.getContact(), t.getRoomNo(), t.getMoveIn(), t.getDeposit());
         }
+    }
+       private static void checkOut() {
+        Tenant t = manager.checkOut(readInt("Tenant ID to check out: "));
+        System.out.println(t.getName() + " has been checked out. Payment history is kept.");
     }
 
     // ---------- Input helpers ----------
